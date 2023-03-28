@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">  
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+  </head>
+    {% extends "base.html" %}
+    {% load static %}
+
+    {% block title %}Coolegas.com{% endblock %}
+    {% block content %}
+    <body>
+      <h1 class = "title">Bienvenido a Coolegas.com!</h1>
+
+    <div class="main-login">
+      <a class = "boton main-boton" href="{% url 'signup' %}">Registro</a>
+      <a class ='boton main-boton' href="{% url 'login_page' %}">Iniciar sesión</a>
+    </div>
+
+
+    <h3>Conoce a gente, prueba nuevas actividades! Disfruta la vida al maximo!</h3>
+    <div class="home-photos">
+      <div class="photos-column-left">
+        <a href="#"><img class="home-photo" src="{% static  'Images/36.jpg' %}"></a>
+        <!-- <h3 class="photo-description">Nombre:</h3> -->
+      </div>
+      <div class="photos-column-left">
+        <a href="#"><img class="home-photo" src="{% static  'Images/406.jpg' %}"></a>
+        <!-- <h3 class="photo-description">Nombre:</h3> -->
+      </div>
+      <div class="photos-column-right">
+        <a href="#"><img class="home-photo" src="{% static  'Images/1006.jpg' %}"></a>
+        <!-- <h3 class="photo-description">Nombre:</h3> -->
+      </div>
+      <div class="photos-column-right">
+        <a href="#"><img class="home-photo" src="{% static  'Images/2006.jpg' %}"></a>
+        <!-- <h3 class="photo-description">Nombre:</h3> -->
+      </div>
+    </div>
+    </body>
+    
+
+      {% endblock %}
+
+</html>

@@ -1,0 +1,28 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'responsive.css'  %}">
+<link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
+<header>
+        <nav>
+          <label for="touch"><span class="menu-items">Menu</span></label>
+          <h1 class = "page-name"><a href="{% url 'home' %}">Coolegas.com</a></h1>
+          <input type="checkbox" id="touch">  
+          <ul class="slide">
+              <li><a class="menu-boton" href="{% url 'sugerencias' %}">Sugerencias</a></li>
+              <li><a class="menu-boton" href="{% url 'about' %}">Nosotros</a></li>
+              <li><a class="menu-boton" href="{% url 'entrar' %}">Entrar</a></li>
+          </ul>
+        </nav>
+</header>
+<body>
+  <main>
+    {% block content %} {% endblock content %}
+  </main>
+  <div class="bottom-margin">--------------</div>
+  <div class="pie-de-pagina" >
+    <p class="creador">Creado por <a href="https://github.com/veggiedev">@veggiedev</a></p> 
+  </div>
+
+
+</body>
+
+
