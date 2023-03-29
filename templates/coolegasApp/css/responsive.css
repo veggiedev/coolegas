@@ -374,7 +374,7 @@ h3{
 
     .slide li:hover {
         transition: 0.5s;
-        background-color: rgb(248, 171, 184);
+        background: linear-gradient(180deg, #f897a7 16%, #eda3ae  68%);
         border-color:rgb(248, 171, 184);
 
 
