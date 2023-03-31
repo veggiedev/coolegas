@@ -19,9 +19,9 @@
     <form  method="post">
       {% csrf_token %}
       {{ user_form.as_p }}
-      {{ user_profile.as_p }}
-      <p><strong>*  Es obligatorio rellenar.</strong></p>
-      <button class = "boton" type="submit">Registrate</button>
+      <!-- {{ user_profile.as_p }} -->
+      <p class="main-content"><strong>*  Es obligatorio rellenar.</strong></p>
+      <button class = "boton main-boton" type="submit">Registrate</button>
     </form>
   </div>
   {% endif %}

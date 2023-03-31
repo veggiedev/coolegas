@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 import random
 from django.contrib.auth import get_user_model
-from .forms import UserForm, UserProfileForm
+from .forms import NewUserForm, UserProfileForm
+from django.contrib import messages
 
 user = get_user_model()
 
@@ -15,32 +16,45 @@ user = get_user_model()
 def index(request):
     return render(request, 'home.html')
 
-def signup(request):
-    user_form = UserForm()
-    return render(request, 'signup.html', {'user_form':user_form})
+# def signup(request):
+#     user_form = NewUserForm()
+#     return render(request, 'signup.html', {'user_form':user_form})
 
 def pagina_registro(request):
-    registrado = False
-    user_form = UserForm() 
-    user_profile = UserProfileForm()
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        user_profile = UserProfileForm(data=request.POST)
-        if form.is_valid() and user_profile.is_valid():
-            form.save()
-            # user_profile.save()
-            user = form.save()
-            # user.set_password(user.password)
-            # user.save()
+    if request.method == "POST":
+        user_form = NewUserForm(request.POST)
+        if user_form.is_valid():
+            user = user_form.save()
+            login(request, user)
+            messages.success(request, "Registration successful." )
+            return redirect("coolegasApp:index")
+        messages.error(request, "Unsuccessful registration. Invalid information.")
+    user_form = NewUserForm()
+    return render (request, "signup.html", context={"user_form":user_form})
+
+
+
+    # registrado = False
+    # user_form = NewUserForm() 
+    # user_profile = UserProfileForm()
+    # if request.method == 'POST':
+    #     form = UserCreationForm(request.POST)
+    #     user_profile = UserProfileForm(data=request.POST)
+    #     if form.is_valid() and user_profile.is_valid():
+    #         form.save()
+    #         # user_profile.save()
+    #         user = form.save()
+    #         # user.set_password(user.password)
+    #         # user.save()
             
-            profile = user_profile.save(commit=False)
-            profile.user = user 
-            registrado = True
-        else:
-            print('Error, Form is invalid')
+    #         profile = user_profile.save(commit=False)
+    #         profile.user = user 
+    #         registrado = True
+    #     else:
+    #         print('Error, Form is invalid')
         
         
-    return render(request, 'signup.html', {'user_form':user_form,'user_profile':user_profile})
+    # return render(request, 'signup.html', {'user_form':user_form,'user_profile':user_profile})
     # else:
     #     form = UserCreationForm() 
 

@@ -2,7 +2,7 @@ body{
     width: 100%;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: antiquewhite;
+    background-color:antiquewhite;
     color: darkslategray;
     font-size: 1.1em;
 }
@@ -10,7 +10,9 @@ li {
     text-decoration: none;
 }
 
-h3{
+h2{
+    float: left;
+    width: 100%;
     text-align:center;
 }
 
@@ -19,15 +21,16 @@ h3{
     float: left;
     transition: 0.5s;
     font-size: 1.2em;
-    background-color: rgb(236, 137, 153);
+    background-color: #ec8999;
     color: rgb(247, 236, 239);
-    padding: 0.4em;
+    padding: 0.4em 0 0.4em 0em;
     border-style: solid;
-    border-radius: 0.15em;
+    border-radius: 0.25em;
     border-color: rgb(236, 137, 153);
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-bottom: 20px;
 }
+
 .boton:hover {
     transition: 0.5s;
     font-size: 1.2em;
@@ -40,52 +43,68 @@ h3{
 .boton:active {
     transition:0.3ms;
     font-size: 1.2em;
-    background-color: rgb(180, 74, 92);
-    color: rgb(247, 209, 218);
+    background-color: #b44a5c;
+    color: #f7d1da;
     border-style: solid;
     border-radius: 0.15em;
     border-color: rgb(180, 74, 92);
-
 }
 
 .title{
+    float: left;
+    width: 90%;
+    margin-left: 5%;
     font-size: 1.8em;
-    margin-top: 60px;
+    margin-top: 30px;
     text-align: center;
     color: rgb(236, 137, 153);
 }
 
 @media (max-width:600px){
     p{
-        width: 85%;
-        margin-left: 7.5%;
+        float: left;
+        width: 90%;
+        margin-left: 5%;
     }
     h3{
         width: 85%;
         margin-left: 7.5%;
     }
+
     h2{
         color:rgb(105, 99, 90);
-        width: 85%;
-        margin-left: 7.5%;
+        width: 100%;
+        /* margin-left: 7.5%; */
     }
     nav {
-        width : 100; 
-        margin : 0px auto; 
+        margin: 0;
+        margin-top: -40px;
+        width : 100%; 
       }
+
+    .main-content{
+        float: left;
+        width: 90%;
+        margin-left: 5%;
+    }
     .page-name{
-        top: 20px;
+        width: 80%;
+        /* margin-left: 5%; */
+        float: left;
+        z-index: 5;
         text-decoration: none;
-        margin-left: 25%;
-        width: 50%;
-        text-align: center;
-        margin-top: -60px;
+
     }
 
     .page-name a{
         transition: .5s;
         text-decoration: none;
-        color: antiquewhite;;
+        text-decoration: underline;
+        text-overflow: clip;
+        font-family: 'Pacifico', cursive;
+        font-size: 2.2em;
+        font-weight: 100;
+        color: #ec8999;
     }
 
     .page-name a:hover{
@@ -94,27 +113,25 @@ h3{
     }
 
     .menu-items {
-        padding : 30px;
-        background : rgb(180, 74, 92); 
-        color : white;
-        font-size : 1.2em;
+        float: left;
+        width: 20%;
+        margin-top: 39px;
+        /* padding-right : 0px;
+        margin-right: 0px; */
         font-variant : small-caps;
         cursor : pointer;
-        display: block;
-        }
-    
-    .menu-items::after {
-        float: right;
-        right: 10%;
-        content: "+";
-        }
-    
+        max-height: 65px;
+
+    }
+
+
     .slide {
+        z-index: 10;
         color: antiquewhite;
-        position: absolute;
+        float: left;        
         margin-left: -40px;
-        margin-top: 7px;
-        background-color: rgb(236, 137, 153);
+        margin-top: -27px;
+        background-color: #ec899a00;
         clear:both;
         width:100%;
         height:0px;
@@ -126,7 +143,7 @@ h3{
     .slide a{
         width: 100%;
         text-decoration: none;
-        color: antiquewhite;
+        color:#ec8999;
         font-size: 1.5em;
     }
 
@@ -138,23 +155,8 @@ h3{
         transition: .5s;
         padding-top : 15px;
         padding-bottom: 15px;
-        border-color:rgb(236, 137, 153);
-        border-style: solid;
-        border-left: none;
-        border-right: none;
-        border-top: 1px;
     }
 
-
-    /* .slide li:hover {
-        transition: 0.5s;
-        border-color:antiquewhite;
-        border-style: solid;
-        border-left: none;
-        border-right: none;
-        border-top: 1px;
-    }
-     */
     .slide li:active {
         background-color: rgb(177, 102, 115);
         border-color:rgb(177, 102, 115);
@@ -166,6 +168,7 @@ h3{
 
     .home-photos{
         max-width: 100%;
+        padding-bottom: 20px;
     }
 
     .photos-column-left img{
@@ -178,30 +181,32 @@ h3{
         width: 49.4%
     }
 
-    #touch {position: absolute; height: 0px}    
+    #touch {
+        position: absolute; 
+        height: 0px;
+    }    
     
     #touch:checked + .slide {
         transition: height .4s ease;
         height: 193px; 
-        /* opacity: 100%;  */
         overflow-y: hidden;
 
     }
 
     .main-login {
+        padding: 0;
         margin-top: 1em;
         margin-bottom: 1.5em;
-
-    }
-
-    .main-login{
         width: 100%;
         float: left;
     }
 
+
     .main-boton{
         float: left;
-        width: 40%;
+        margin-left: 5%;
+
+        width: 42%;
         text-align: center;
     }
 
@@ -209,17 +214,26 @@ h3{
         background-color: rgb(180, 74, 92); 
         border-color: rgb(180, 74, 92); 
     }
+
+    .signup-form{
+        width: 100%;
+    }
+
     form{
-        width: 90%;
-        margin-left: 5%;
+        width: 100%;
+        /* margin-left: 2.5%; */
     }
     form input{
         justify-content: center;
         float: right;
-        width: 40%;
-
-
+        width: 45%;
     }
+    span {
+            margin: 0;
+    }
+    
+
+
     #id_birthdate_day, #id_birthdate_month, #id_birthdate_year{
         float: right;
     }
@@ -246,25 +260,17 @@ h3{
     }
     
     .pie-de-pagina {
-        background-color: rgb(180, 74, 92); 
-        border-color:rgb(180, 74, 92); 
-        border-style: solid;
         padding-bottom: 1em;
-        padding-top: 1em;
         width: 100%;
         height: 1em;
         display: block;
         position: fixed;
         z-index: 10;
-        bottom: 0px;
-        color: antiquewhite;
+        bottom: 10px;
+        color: #b44a5c;
     }
     
-    img{
-        border-style: solid;
-        border-width: 1px;
-        border-color: rgb(236, 137, 153);
-    }
+
 
     .pie-de-pagina p{
         text-align: center;
@@ -273,7 +279,6 @@ h3{
         text-decoration: none;
         color: rgb(236, 137, 153);
     }
-
 } 
 
 
@@ -328,11 +333,11 @@ h3{
         display: block;
         }
     
-    .menu-items::after {
+    /* .menu-items::after {
         float: right;
         right: 10%;
         content: "+";
-        }
+        } */
     
     .slide {
         color: antiquewhite;
