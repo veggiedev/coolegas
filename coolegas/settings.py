@@ -136,6 +136,7 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = Path.joinpath(BASE_DIR, 'templates/coolegasApp/')
 MEDIA_URL = 'templates/coolegasApp/media/'
+LOGIN_URL = 'templates/usuarios/login_page'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

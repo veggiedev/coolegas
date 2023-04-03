@@ -11,12 +11,20 @@
 
   {% block content %} 
   <h1 class = "title">Entra a tu cuenta</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ login_form.as_p }}
-    <button class = "main-boton boton" type="submit">Entrar</button>
-  </form>
-  <a class = 'forgotten' href="{% url 'signup' %}">Crear cuenta nueva</a>
+    <form action="{% url 'login_page' %}" method="post">
+      {% csrf_token %}
+      <div class="login_form">
+        <label class="fomr_label" for="usuario">Nombre de usuario:</label>
+        <input type="text" name="usuario" placeholder="Introduzca usuario">
+
+        <label class="fomr_label" for="password">Contraseña:</label>
+        <input type="text" name="password">
+      </div>
+      <button class = "login-boton boton" type="submit">Entrar</button>
+    </form>
+    <a class = 'forgotten' href="{% url 'signup' %}">Crear cuenta nueva</a>
+
+  
   {% endblock %}
 
 </body>
