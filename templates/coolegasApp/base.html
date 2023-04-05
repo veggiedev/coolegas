@@ -4,17 +4,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<script src="{% static 'script.js' %}"></script>
+
 <header>
-        <nav>
-            <h1 class = "page-name"><a href="{% url 'home' %}">Coolegas.com</a></h1>
-            <label for="touch"><img class="menu-items" src="{% static 'dropdown-icon.svg' 'alt=dropdown-icon' %}"></label>
-            <input type="checkbox" id="touch">
-            <ul class="slide">
-              <a class="menu-boton" href="{% url 'sugerencias' %}"><li>Sugerencias</li></a>
-              <a class="menu-boton" href="{% url 'about' %}"><li>Nosotros</li></a>
-              <a class="menu-boton" href="{% url 'entrar' %}"><li>Entrar</li></a>
-          </ul>  
-        </nav>
+  <nav>
+    <h1 class = "page-name"><a href="{% url 'home' %}">Coolegas.com</a></h1>
+    <label for="touch"><img class="menu-items" src="{% static 'dropdown-icon.svg' 'alt=dropdown-icon' %}"></label>
+    <input type="checkbox" id="touch">
+    <ul class="slide">
+      <a class="menu-boton" href="{% url 'sugerencias' %}"><li>Sugerencias</li></a>
+      <a class="menu-boton" href="{% url 'about' %}"><li>Nosotros</li></a>
+      <a class="menu-boton" href="{% url 'entrar' %}"><li>Entrar</li></a>
+  </ul>  
+  </nav>
 </header>
 <body>
   <main>
