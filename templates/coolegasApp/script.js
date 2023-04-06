@@ -1,5 +1,3 @@
-// document.addEventListener('DOMContentLoaded', () => {
-
   const carousel = document.querySelector('.carousel');
   const carouselInner = carousel.querySelector('.carousel-inner');
   const carouselItems = carousel.querySelectorAll('.carousel-item');
@@ -46,4 +44,3 @@
       carouselInner.style.transform = `translateX(-${currentIndex * carouselItemWidth}px)`;
     }
   });
-// });

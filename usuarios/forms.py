@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.db import models
 from .models import UserProfile
 import datetime
 
@@ -18,11 +19,6 @@ for i in range (250):
 
 
 class NewUserForm(UserCreationForm):
-	# def __init__(self, *args, **kwargs):
-	# 	super(NewUserForm, self).__init__(*args, **kwargs)
-
-	# 	for fieldname in ['username', 'password1', 'password2']:
-	# 		self.fields[fieldname].help_text = None
 	username = forms.CharField(label='Nombre de Usuario', max_length='30', required='True')
 	first_name = forms.CharField(label='Nombre',max_length=30, required=True, help_text='*')
 	last_name = forms.CharField(label='Apellidos',max_length=30, required=True, help_text='*')
@@ -31,24 +27,10 @@ class NewUserForm(UserCreationForm):
 	password1 = forms.CharField(label='Contraseña',widget=forms.PasswordInput(), help_text='<br>La contraseña debe contener mayúsculas y letras. Debe ser difícil de adivinar.')
 	password2 = forms.CharField(label='Repita Contraseña',widget=forms.PasswordInput(), help_text='<br>Confirma la contraseña por favor.')
 
-	# confirm_password=forms.CharField(label='Confirma la contraseña',widget=forms.PasswordInput(), help_text='*')
-	# nacimiento = forms.DateField(null=True,verbose_name=('Fecha de nacimiento (dd/mm/aaaa)'))
-	# fecha_creacion  = forms.DateField(verbose_name=('Fecha cuenta creada'), auto_now_add=True)
-	
 	class Meta():
 		model = User
 		fields = ['username','first_name', 'last_name', 'birthdate', 'email']
 	
-	# def clean(self):
-	# 	cleaned_data = super(UserForm, self).clean()
-	# 	password = cleaned_data.get("password")
-	# 	confirm_password = cleaned_data.get("confirm_password")
-
-	# 	if password != confirm_password:
-	# 		raise forms.ValidationError(
-	# 			"Las contraseñas no coinciden"
-	# 		)
-
 	def save(self, commit=True):
 		user = super(NewUserForm, self).save(commit=False)
 		user.email = self.cleaned_data['email']
@@ -57,9 +39,18 @@ class NewUserForm(UserCreationForm):
 		return user
 	
 class UserProfileForm(forms.ModelForm):
+	email = models.OneToOneField(NewUserForm, on_delete=models.CASCADE)
 	class Meta():
-		model = UserProfile
+		model = NewUserForm
 		fields = ('provincia', 'ciudad')
+	def save(self, commit=True):
+		user = super(UserProfileForm, self).save(commit=False)
+		user.provincia = self.cleaned_data['provincia']
+		user.ciudad = self.cleaned_data['ciudad']
+		if commit:
+			user.save()
+		return user
+	
 
 
 

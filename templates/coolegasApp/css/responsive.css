@@ -16,7 +16,6 @@ h2{
     text-align:center;
 }
 p{
-    background-color: #b44a5c;
     display: block;
 }
 .boton {
@@ -261,7 +260,7 @@ p{
         width: 45%;
     }
     span {
-            margin: 0;
+        margin: 0;
     }
     
     .top-content{
@@ -291,7 +290,7 @@ p{
     }
 
     .bottom-margin {
-        height: 10em;
+        height: 5em;
         width: 99%;
         text-align: center;
         color: rgb(255, 236, 243);
@@ -319,58 +318,67 @@ p{
     }
 
     .carousel {
-        display: flex;
+        position: relative;
         overflow: hidden;
         width: 100%;
-        margin: 0;
-        position: relative;
-    }
-    
-    .carousel-slide {
+        clear: both;
+      }
+      .carousel img {
+        max-width: 100%;
+      }
+      
+      .carousel-inner {
         display: flex;
         flex-wrap: nowrap;
-        /* width: calc(500px * 3); */
-        animation: slide 10s linear infinite;
-    }
-    
-    .carousel-slide img {
-        display: flex;
-        width: 110%;
-    }
-    
-
-    .carousel-controls {
-        float: left;
+        transition: transform 0.3s ease-in-out;
+      }
+      
+      .carousel-item {
+        flex: 0 0 auto;
         width: 100%;
-    }
-
-    .carousel-control {
+        max-width: 100%;
+        box-sizing: border-box
+      }
+      
+      .carousel-control {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         width: 50px;
         height: 50px;
-        border-radius: 50%;
-        background-color:#ec8999;
-        color:#b44a5c;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: opacity 0.3s;
-    }
-    
-    .carousel-control:hover {
-        opacity: 0.8;
-    }
-    
-    .carousel-control-prev {
-        left: 0;
-    }
-    
-    .carousel-control-next {
-        right: 0;
-    }
+        border: none;
+        background-color: transparent;
+        font-size: 2em;
+        color: rgb(236, 137, 153);
+      }
+      
+      .prev {
+        transition: transform 0.2s ease;
+        left: 10px;
+      }
+      
+      .prev:hover {
+        transition: transform 0.2s ease;
+        color: #b44a5c;
+      }
+
+      .carousel-control:active {
+        transform: scale(0.4) translateY(-130%);
+        transition: transform 0.2s ease;
+        
+      }
+
+      .next {
+        transition: transform 0.2s ease;
+        right: 10px;
+      }
+
+      .next:hover {
+        color: #b44a5c;
+      }
+
+
+      
 
   
 } 
