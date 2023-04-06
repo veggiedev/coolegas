@@ -56,6 +56,7 @@ today_formated = today.strftime("%Y-%m-%d")
 
 
 class UserProfile(models.Model):
+    id = models.AutoField(primary_key=True)
     # username = models.OneToOneField(User, on_delete=models.CASCADE)
     # user_name = models.CharField(null=False,verbose_name=('Nombre completo'),max_length=264,unique=False)   
     # email = models.EmailField(null=True,verbose_name=('Correo electronico'),max_length=264,unique=True)
@@ -76,16 +77,13 @@ class UserProfile(models.Model):
     latitud = models.CharField(null=True,max_length=264,unique=False)
     longitud = models.CharField(null=True,max_length=264,unique=False)
     
-    # class Meta():
-    #     model = User
-    #     fields = ['username','first_name', 'last_name', 'birthdate', 'email', 'password', 'confirm_password']
-        # def age(self):
-        #     today = date.today()
-        #     today_formated = today.strftime("%d/%m/%Y")
-        #     born = self.birthday
-        #     rest = 1 if (today_formated.month, today_formated.day) < (born.month, born.day) else 0
-        #     return today_formated.day.year - born.year - rest
-        
-        # def __str__(self):
-        #     return self.username
+
     
+
+class Actividades(models.Model):
+    actividad = models.CharField(null=True,max_length=264,unique=False)
+    latitud = models.CharField(null=True,max_length=264,unique=False)
+    longitud = models.CharField(null=True,max_length=264,unique=False)
+    invitados = models.CharField(null=True,max_length=264,unique=False)
+
+
