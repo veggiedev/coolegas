@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 import random
 from django.contrib.auth import get_user_model
-from .forms import NewUserForm, UserProfileForm
+from .forms import NewUserForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from django.urls import reverse

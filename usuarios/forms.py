@@ -38,18 +38,18 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user
 	
-class UserProfileForm(forms.ModelForm):
-	email = models.OneToOneField(NewUserForm, on_delete=models.CASCADE)
-	class Meta():
-		model = NewUserForm
-		fields = ('provincia', 'ciudad')
-	def save(self, commit=True):
-		user = super(UserProfileForm, self).save(commit=False)
-		user.provincia = self.cleaned_data['provincia']
-		user.ciudad = self.cleaned_data['ciudad']
-		if commit:
-			user.save()
-		return user
+# class UserProfileForm(forms.ModelForm):
+# 	email = models.OneToOneField(NewUserForm, on_delete=models.CASCADE)
+# 	class Meta():
+# 		model = NewUserForm
+# 		fields = ('provincia', 'ciudad')
+# 	def save(self, commit=True):
+# 		user = super(UserProfileForm, self).save(commit=False)
+# 		user.provincia = self.cleaned_data['provincia']
+# 		user.ciudad = self.cleaned_data['ciudad']
+# 		if commit:
+# 			user.save()
+# 		return user
 	
 
 
