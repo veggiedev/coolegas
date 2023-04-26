@@ -30,6 +30,7 @@ def pagina_registro(request):
     if request.method == "POST":
         user_form = NewUserForm(request.POST)
         if user_form.is_valid():
+            print(user_form)
             user = user_form.save()
             login(request, user)
             messages.success(request, "Registration successful." )
@@ -46,28 +47,37 @@ def about(request):
 
 
 def login_page(request):
-
-    if request.method == 'POST':
-        usuario = request.POST.get('usuario')
-        password = request.POST.get('password')
-
-        user = authenticate(usuario, password)
-
-        if user:
-            if user.is_active:
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
-            
+                print(f"You are now logged in as {username}.")
+                return redirect("login.html")
             else:
-                return HttpResponse('Account not active')
+                messages.error(request,"Invalid username or password.")
         else:
-            print('Someone tried to login and failed!')
-    else:
-        return render(request, 'login.html', {})
-    # login = AuthenticationForm()
-    # return render(request, 'login.html', {'login_form':login})
+            messages.error(request,"Invalid username or password.")
+    form = AuthenticationForm()
+    return render(request, "login.html", context={"login_form":form})
  
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
+# Create a view for the user, where there is a list of activities available to the user to choose from and add that activitie to the users profile. the activity should have a start date and time and a finish date and time
+def user_activities(request):
+    #create a list of activities
+    actividades = ['Ciclismo', 'Correr', 'Natación', 'Senderismo', 'Caminar', 
+                   'Pasear', 'Bicicleta', 'Caminata', 'Netflix', 'Cine', 
+                   'Cocinar', 'Comer', 'Bailar', 'Fútbol', 'Baloncesto', 
+                   'Tenis', 'Voleibol', 'Ping Pong', 'Ajedrez', 'Bar', 'Café', 
+                   'Cerveza', 'Cena', 'Cóctel', 'Comida', 'Desayuno', 'Picnic', 
+                   'Pintxos', 'Vino', 'Yoga', 'Meditación', 'Pilates', 'Spinning', 
+                   'Crossfit', 'Gimnasio', 'Piscina', 'Paseo', 'Caminata', 
+                   'Camping']

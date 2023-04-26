@@ -11,15 +11,16 @@
 
   {% block content %} 
   <h1 class = "title">Entra a tu cuenta</h1>
-    <form action="{% url 'login_page' %}" method="post">
+  <form  method="post">
       {% csrf_token %}
       <div class="login_form">
-        <label class="fomr_label" for="usuario">Nombre de usuario:</label>
-        <input type="text" name="usuario" placeholder="Introduzca usuario">
+        <p class="main-content">{{ login_form.as_table }}</p>
+        <!-- <label class="form_label" for="email">Nombre de usuario:</label>
+        <input type="email" name="email" placeholder="Introduzca correo electrónico">
 
-        <label class="fomr_label" for="password">Contraseña:</label>
-        <input type="text" name="password">
-      </div>
+        <label class="form_label" for="password">Contraseña:</label>
+        <input type="password" name="password">
+      </div> -->
       <button class = "login-boton boton" type="submit">Entrar</button>
     </form>
     <a class = 'forgotten' href="{% url 'signup' %}">Crear cuenta nueva</a>

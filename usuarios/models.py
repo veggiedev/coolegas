@@ -6,7 +6,8 @@ import os
 import pandas
 from unidecode import unidecode
 from django.contrib.auth.models import User
- 
+from django.contrib.auth.decorators import login_required
+
  
  #----------------------------------logic functions--------------------------------------------#
 
@@ -53,6 +54,23 @@ today_formated = today.strftime("%Y-%m-%d")
  #----------------------------------end of logic functions--------------------------------------------#
 
 
+@login_required
+class Actividades(models.Model):
+    actividades = ['Ciclismo', 'Correr', 'Natación', 'Senderismo', 'Caminar', 
+                   'Pasear', 'Bicicleta', 'Caminata', 'Netflix', 'Cine', 
+                   'Cocinar', 'Comer', 'Bailar', 'Fútbol', 'Baloncesto', 
+                   'Tenis', 'Voleibol', 'Ping Pong', 'Ajedrez', 'Bar', 'Café', 
+                   'Cerveza', 'Cena', 'Cóctel', 'Comida', 'Desayuno', 'Picnic', 
+                   'Pintxos', 'Vino', 'Yoga', 'Meditación', 'Pilates', 'Spinning', 
+                   'Crossfit', 'Gimnasio', 'Piscina', 'Paseo', 'Caminata', 
+                   'Camping']
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    actividad = models.CharField(choices=[(actividad, actividad) for actividad in actividades], max_length=264)
+    descripcion = models.CharField(max_length=264, null=True)
+    fecha_inicio = models.DateTimeField(default=today_formated)
+    fecha_fin = models.DateTimeField(default=today_formated)
+    provincia = models.CharField(choices=provincias_ordenadas, default='A Coruna', null=True,verbose_name=('Provincia'),max_length=264, unique=False)
+    ciudad = models.CharField(choices=municipios_ordenados, default='Ababuj', null=True,verbose_name=('Ciudad'),max_length=264,unique=False)
 
 
 class UserProfile(models.Model):
@@ -80,10 +98,10 @@ class UserProfile(models.Model):
 
     
 
-class Actividades(models.Model):
-    actividad = models.CharField(null=True,max_length=264,unique=False)
-    latitud = models.CharField(null=True,max_length=264,unique=False)
-    longitud = models.CharField(null=True,max_length=264,unique=False)
-    invitados = models.CharField(null=True,max_length=264,unique=False)
+# class Actividades(models.Model):
+#     actividad = models.CharField(null=True,max_length=264,unique=False)
+#     latitud = models.CharField(null=True,max_length=264,unique=False)
+#     longitud = models.CharField(null=True,max_length=264,unique=False)
+#     invitados = models.CharField(null=True,max_length=264,unique=False)
 
 

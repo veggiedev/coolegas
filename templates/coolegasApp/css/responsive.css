@@ -87,7 +87,7 @@ p{
     .main-content{
         float: left;
         width: 90%;
-        margin-left: 5%;
+        /* margin-left: 4%; */
     }
     .page-name{
         margin-inline-start: 2.5%;
@@ -241,23 +241,49 @@ p{
         margin-block-start: 20px;
     }
 
-    form label{
-        float: left;
-        width: 45%;
-        margin-block-end: 20px;
-    }
-
     form{
-        margin-block-end: 20px;
         float: left;
         width: 100%;
-        /* margin-left: 2.5%; */
     }
+
+    form label{
+        height: 1.5em;
+        float: left;
+        width: 100%;
+        /* margin-block-end: 10px; */
+    }
+    select{
+        height: 1.5em;
+        float: left;
+        max-width: 33.333%;
+    }
+
+    select #id_birthdate_year, #id_birthdate_month, #id_birthdate_day{
+        float: left;
+        height: 1.5em;
+        margin-block-end: 20px;
+
+        /* max-width: 15%; */
+    }
+
+
+
     form input{
+        height: 1.5em;
+        margin-block-end: 20px;
+        width: 80%;
+    }
+
+    /* form p{
         margin-block-end: 20px;
         justify-content: center;
-        float: right;
-        width: 45%;
+        float: left;
+        width: 50%;
+    } */
+    #helptext{
+        width: 100%;
+        float: left;
+
     }
     span {
         margin: 0;
@@ -269,9 +295,9 @@ p{
         margin-inline-start: 5%;
     }
 
-    #id_birthdate_day, #id_birthdate_month, #id_birthdate_year{
+    /* #id_birthdate_day, #id_birthdate_month, #id_birthdate_year{
         float: right;
-    }
+    } */
     #id_ciudad {
         width: 50%;
         float: right;

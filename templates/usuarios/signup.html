@@ -15,15 +15,12 @@
     <h1>Gracias por registrarte!</h1>
   {% else %}
   <h1 class = "title">Registro</h1>
-  <div class = "signup-form">
     <form  method="post">
       {% csrf_token %}
-      {{ user_form.as_p }}
+      <p class="main-content">{{ user_form.as_table }}</p>
       <!-- {{ user_profile.as_p }} -->
-      <p class="main-content"><strong>*  Es obligatorio rellenar.</strong></p>
       <button class = "boton main-boton" type="submit">Registrate</button>
     </form>
-  </div>
   {% endif %}
 {% endblock %}
 </html>
